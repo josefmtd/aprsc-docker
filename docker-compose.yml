@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  aprsc:
+    build: ./build/aprsc/.
+    volumes:
+      - ./config/default:/etc/default:rw
+      - ./config/etc:/opt/aprsc/etc/:rw
+    ports:
+      - 8080:8080
+      - 10152:10152
+      - 14501:14501
+      - 14580:14580
+    privileged:
+      true
+
