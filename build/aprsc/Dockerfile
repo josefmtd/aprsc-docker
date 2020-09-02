@@ -1,7 +1,7 @@
 FROM debian:buster-slim
 
-RUN apt update && \
-    apt install -y build-essential \
+RUN apt-get update && \
+    apt-get install -y build-essential \
     debhelper \
     libc6 \ 
     zlib1g \
@@ -16,8 +16,8 @@ RUN apt update && \
 RUN git clone https://github.com/hessu/aprsc && \
     cd aprsc/src && \
     ./configure && \
-    make make-deb -j4 && \
+    make make-deb && \
     cd .. && \
-    apt install ./*.deb
+    apt-get install ./*.deb
 
 CMD service aprsc start && tail -F /opt/aprsc/logs/aprsc.log
